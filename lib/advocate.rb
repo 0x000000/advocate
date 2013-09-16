@@ -1,4 +1,2 @@
-require "advocate/version"
-
-module Advocate
-end
+require 'advocate/version'
+require 'advocate/contractor'
