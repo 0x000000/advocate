@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Advocate::Contractor do
   context 'when included to some class' do
     class AdvContractorTestClass
-      include Advocate::Contractor
+      extend Advocate::Contractor
     end
 
     it 'should add contract_for class method' do

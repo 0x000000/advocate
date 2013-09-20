@@ -1,12 +1,11 @@
 module Advocate
   module Contractor
-    def self.included(base)
-      base.extend ClassMethods
-    end
+    def contract_for(method_name, &block)
+      contracted_method = instance_method(method_name)
+      contract          = Advocate::Contract.new self, contracted_method, &block
 
-    module ClassMethods
-      def contract_for(method_name, &block)
-        #contract = Advocate::Contract.new method_name, &block
+      define_method method_name do |*args|
+        contract.execute *args
       end
     end
   end
