@@ -30,6 +30,7 @@ describe Advocate::Matchers::TypeMatchers do
         :array   => {:positive => [1, 2],     :negative => {1 => 2}},
         :hash    => {:positive => {:a => :b}, :negative => [1, 2]},
         :regexp  => {:positive => /wow/,      :negative => 'hi'},
+        :proc    => {:positive => Proc.new {},:negative => {}},
       }.each do |name, values|
         describe "#{name}" do
           context "for #{name} values" do

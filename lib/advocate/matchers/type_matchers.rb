@@ -34,6 +34,10 @@ module Advocate
         value.kind_of? Regexp
       end
 
+      def proc?
+        value.kind_of? Proc
+      end
+
       def number
         halt_chain :should_be_number unless number?
         self
@@ -111,6 +115,16 @@ module Advocate
 
       def not_regexp
         halt_chain :should_not_be_regexp if regexp?
+        self
+      end
+
+      def proc
+        halt_chain :should_be_proc unless proc?
+        self
+      end
+
+      def not_proc
+        halt_chain :should_not_be_proc if proc?
         self
       end
     end
